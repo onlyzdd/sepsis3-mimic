@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS abx_poe_list CASCADE;
+DROP TABLE IF EXISTS abx_poe_list_iv CASCADE;
 CREATE TABLE abx_poe_list_iv AS
 with t1 as
 (

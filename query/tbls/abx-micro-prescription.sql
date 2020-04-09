@@ -105,7 +105,12 @@ select
         then 0
       else 1 end as suspected_infection
 
-  , coalesce(last72_charttime,antibiotic_time) as suspected_infection_time
+  , case
+      when last72_charttime is not null and antibiotic_time is not null 
+        then last72_charttime
+      when antibiotic_time is not null and next24_charttime is not null 
+        then antibiotic_time
+      else null end as suspected_infection_time
 
   -- the specimen that was cultured
   , case
